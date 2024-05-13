@@ -1,0 +1,91 @@
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 77px;
+}
+
+.activities {
+  width: 1212px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.activity {
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 20px;
+  width: 350px;
+  height: 430px;
+  background-color: rgba(255, 217, 100, 0.3);
+  border-radius: 20px;
+  transition: 0.2s;
+}
+
+.activity:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.1);
+}
+
+.selected {
+  background-color: rgba(255, 217, 100, 0.6);
+}
+
+.activityName {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3c3b3b;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.activityImage {
+  width: 312px;
+  height: 259px;
+  border-radius: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 24px;
+}
+
+.description {
+  font-size: 18px;
+  color: #888888;
+  font-weight: 300;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 77px;
+  background-color: #fbc20f;
+  color: #fff;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  font-size: 24px;
+  transition: 0.2s;
+}
+
+.button:hover {
+  opacity: 0.85;
+}
