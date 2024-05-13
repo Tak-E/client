@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./UserInfo.module.css";
 import { useNavigate } from "react-router-dom";
+import Modal from "../../components/Modal/Modal";
 
 const UserInfo = () => {
   const navigate = useNavigate();
@@ -15,12 +16,6 @@ const UserInfo = () => {
     const { name, value } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
   };
-
-  useEffect(() => {
-    if (errorMessage !== "") {
-      alert(errorMessage);
-    }
-  }, [errorMessage]);
 
   const handleSubmit = () => {
     if (userInfo.age === "" || userInfo.sex === "") {
@@ -39,6 +34,9 @@ const UserInfo = () => {
 
   return (
     <section>
+      {errorMessage !== "" && (
+        <Modal onClose={() => setErrorMessage("")} description={errorMessage} />
+      )}
       <div className={styles.container}>
         <h1 className={styles.title}>성별과 나이를 입력해주세요.</h1>
         <form>
