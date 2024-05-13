@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import UserInfo from "../pages/UserInfo";
+import UserInfo from "../pages/userInfo/UserInfo";
 
 const Router = () => {
   return (
