@@ -1,0 +1,73 @@
+.container {
+  position: relative;
+}
+
+.bg {
+  background-color: #fffbda;
+  position: absolute;
+  height: 80vh;
+  width: 100%;
+}
+
+.bgGrass {
+  background-color: #c2f054;
+  height: 20vh;
+  width: 100%;
+  position: absolute;
+  top: 80vh;
+}
+
+img {
+  position: absolute;
+}
+
+img.alignCenter {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.control {
+  top: 646px;
+  z-index: 1;
+}
+
+.toggle {
+  top: 746px;
+  z-index: 1;
+}
+
+.character {
+  top: 310px;
+}
+
+.sun {
+  top: 10px;
+}
+
+.toolbar {
+  width: 300px;
+  height: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  top: 658px;
+  position: relative;
+  z-index: 2;
+}
+
+.smile {
+  position: absolute;
+  left: 42%;
+}
+
+.stress {
+  position: absolute;
+  left: 78%;
+  top: 50%;
+}
+
+.graph {
+  position: absolute;
+  left: 3%;
+  top: 50%;
+}
