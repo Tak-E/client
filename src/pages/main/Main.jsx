@@ -6,9 +6,18 @@ import toggleImg from "../../assets/toolbar.svg";
 import graphIcon from "../../assets/graph.svg";
 import smileIcon from "../../assets/smile.svg";
 import stressIcon from "../../assets/stress.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Main = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem("userInfo")) {
+      navigate("/user-info");
+    }
+  }, []);
+
   return (
     <div className={styles.container}>
       <div>
