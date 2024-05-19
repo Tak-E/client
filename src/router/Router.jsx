@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserInfo from "../pages/userInfo/UserInfo";
 import ActivityRecommendation from "../pages/activityRecommendation/ActivityRecommendation";
 import Main from "../pages/main/Main";
+import Category from "../pages/category/Category";
 
 const Router = () => {
   return (
@@ -13,6 +14,7 @@ const Router = () => {
           path="/activity-recommendation"
           element={<ActivityRecommendation />}
         />
+        <Route path="/category" element={<Category />} />
       </Routes>
     </BrowserRouter>
   );
