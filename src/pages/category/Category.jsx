@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./Category.module.css";
 
 const EMOTIONS = [
@@ -76,6 +77,17 @@ const EMOTIONS = [
 ];
 
 const Category = () => {
+  const [selectedEmotions, setSelectedEmotions] = useState([]);
+
+  const handleSelectEmotion = (e) => {
+    e.currentTarget.classList.toggle(styles.selected);
+    setSelectedEmotions([...selectedEmotions, e.target.textContent]);
+  };
+
+  const handleSubmitEmotions = () => {
+    localStorage.setItem("selcted-emotions", selectedEmotions);
+  };
+
   return (
     <div className={styles.container}>
       <div>
@@ -83,15 +95,17 @@ const Category = () => {
         <ul className={styles.emotions}>
           {EMOTIONS.map((emotion) => (
             <li
-              onClick={(e) => e.currentTarget.classList.toggle(styles.selected)}
               key={emotion.id}
               className={styles.emotion}
+              onClick={handleSelectEmotion}
             >
               {emotion.title}
             </li>
           ))}
         </ul>
-        <button className={styles.button}>선택완료</button>
+        <button className={styles.button} onClick={handleSubmitEmotions}>
+          선택완료
+        </button>
       </div>
     </div>
   );
