@@ -1,3 +1,5 @@
+// Taejin Kim
+
 import styles from "./Main.module.css";
 import controlImg from "../../assets/control.svg";
 import characterImg from "../../assets/character.svg";

@@ -1,3 +1,5 @@
+/* Taejin Kim */
+
 import { useState } from "react";
 import styles from "./UserInfo.module.css";
 import { useNavigate } from "react-router-dom";
