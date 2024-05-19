@@ -1,3 +1,5 @@
+// Byeonghyeon Kang
+
 import { useState } from "react";
 import styles from "./ActivityRecommendation.module.css";
 
@@ -43,9 +45,8 @@ const ActivityRecommendation = () => {
           {activities.map((activity, index) => (
             <li
               key={index}
-              className={`${styles.activity} ${
-                selectedActivityIndex === index && styles.selected
-              }`}
+              className={`${styles.activity} ${selectedActivityIndex === index && styles.selected
+                }`}
               onClick={() => handleActivityClick(index)}
             >
               <h2 className={styles.activityName}>{activity.title}</h2>

@@ -1,3 +1,5 @@
+/* Byeonghyeon Kang */
+
 section {
   height: 100vh;
   background-color: #fffbda;
@@ -51,7 +53,7 @@ form {
   display: none;
 }
 
-.select input[type="radio"] + label {
+.select input[type="radio"]+label {
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -70,11 +72,11 @@ form {
   transition: all 0.2s;
 }
 
-.select input[type="radio"] + label:hover {
+.select input[type="radio"]+label:hover {
   transform: translate(-2px, -2px);
 }
 
-.select input[type="radio"]:checked + label {
+.select input[type="radio"]:checked+label {
   background-color: #ffdc57;
 }
 
