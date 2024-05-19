@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./Category.module.css";
+import { useNavigate } from "react-router-dom";
 
 const EMOTIONS = [
   {
@@ -78,6 +79,7 @@ const EMOTIONS = [
 
 const Category = () => {
   const [selectedEmotions, setSelectedEmotions] = useState([]);
+  const navigate = useNavigate();
 
   const handleSelectEmotion = (e) => {
     e.currentTarget.classList.toggle(styles.selected);
@@ -86,6 +88,7 @@ const Category = () => {
 
   const handleSubmitEmotions = () => {
     localStorage.setItem("selcted-emotions", selectedEmotions);
+    navigate("/activity-recommendation");
   };
 
   return (

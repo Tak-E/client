@@ -6,6 +6,7 @@ import toggleImg from "../../assets/toolbar.svg";
 import graphIcon from "../../assets/graph.svg";
 import smileIcon from "../../assets/smile.svg";
 import stressIcon from "../../assets/stress.svg";
+import { Link } from "react-router-dom";
 
 const Main = () => {
   return (
@@ -33,21 +34,18 @@ const Main = () => {
       />
 
       <div className={styles.toolbar}>
-        <img
-          className={`${styles.toolbarIcon} ${styles.graph}`}
-          src={graphIcon}
-          alt="graph-icon"
-        />
-        <img
+        <Link className={`${styles.toolbarIcon} ${styles.graph}`}>
+          <img src={graphIcon} alt="graph-icon" />
+        </Link>
+        <Link
+          to="/category"
           className={`${styles.toolbarIcon} ${styles.smile}`}
-          src={smileIcon}
-          alt="smile-icon"
-        />
-        <img
-          className={`${styles.toolbarIcon} ${styles.stress}`}
-          src={stressIcon}
-          alt="stress-icon"
-        />
+        >
+          <img src={smileIcon} alt="smile-icon" />
+        </Link>
+        <Link className={`${styles.toolbarIcon} ${styles.stress}`}>
+          <img src={stressIcon} alt="stress-icon" />
+        </Link>
       </div>
     </div>
   );
