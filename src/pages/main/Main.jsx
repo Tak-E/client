@@ -9,10 +9,12 @@ import graphIcon from "../../assets/graph.svg";
 import smileIcon from "../../assets/smile.svg";
 import stressIcon from "../../assets/stress.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import StressInputModal from "../../components/Modal/StressInputModal";
 
 const Main = () => {
   const navigate = useNavigate();
+  const [isShowStressInputModal, setIsShowStressInputModal] = useState(false);
 
   useEffect(() => {
     if (!localStorage.getItem("userInfo")) {
@@ -22,6 +24,9 @@ const Main = () => {
 
   return (
     <div className={styles.container}>
+      {isShowStressInputModal && (
+        <StressInputModal onClose={() => setIsShowStressInputModal(false)} />
+      )}
       <div>
         <div className={styles.bg}></div>
         <div className={styles.bgGrass}></div>
@@ -54,9 +59,12 @@ const Main = () => {
         >
           <img src={smileIcon} alt="smile-icon" />
         </Link>
-        <Link className={`${styles.toolbarIcon} ${styles.stress}`}>
+        <button
+          onClick={() => setIsShowStressInputModal(true)}
+          className={`${styles.toolbarIcon} ${styles.stress}`}
+        >
           <img src={stressIcon} alt="stress-icon" />
-        </Link>
+        </button>
       </div>
     </div>
   );

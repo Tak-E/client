@@ -21,12 +21,22 @@
   border-radius: 20px;
 }
 
+.container--stress-input {
+  height: 150px;
+}
+
 .inner {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.innerTitle {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "NanumGothic";
 }
 
 .description {
@@ -50,4 +60,23 @@
 
 .button:hover {
   opacity: 0.85;
+}
+
+.stressInput {
+  width: 433px;
+  height: 50px;
+  border-radius: 20px;
+  background-color: #ffd964;
+  margin-top: 20px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 50px;
+  position: absolute;
+  left: 0;
+  border-radius: 20px;
+  background-color: #fbc20f;
 }
