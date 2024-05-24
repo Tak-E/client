@@ -34,14 +34,14 @@
 
 .emotion:hover {
   transition: all 0.1s ease-in-out;
+  transform: translate(-2px, -2px);
 
-  border-bottom: 3px solid rgba(0, 0, 0, 0.1);
   height: 47px;
 }
 
 .emotion.selected {
-  color: #9a7806;
-  border: 1px solid #f0c847;
+  background-color: #fbc20f;
+  color: #fff;
 }
 
 .button {
