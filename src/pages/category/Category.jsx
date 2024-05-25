@@ -77,6 +77,18 @@ const EMOTIONS = [
     id: 17,
     title: "속상한",
   },
+  {
+    id: 18,
+    title: "분한",
+  },
+  {
+    id: 19,
+    title: "후회되는",
+  },
+  {
+    id: 20,
+    title: "두려운",
+  },
 ];
 
 const Category = () => {
