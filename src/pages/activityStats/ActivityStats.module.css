@@ -1,4 +1,4 @@
- /* Byeonghyeon Kang */
+/* Byeonghyeon Kang */
 
 .container {
   height: 100%;
@@ -36,6 +36,13 @@
   padding: 24px 36px;
   border-radius: 15px;
   margin-bottom: 59px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.activity:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.1);
 }
 
 .activity:last-child {

@@ -3,6 +3,8 @@
 import styles from "./ActivityStats.module.css";
 import DefaultStar from "../../assets/star--default.svg";
 import ActiveStar from "../../assets/star--active.svg";
+import { useState } from "react";
+import MemoModal from "../../components/Modal/MemoModal";
 
 const activityStats = [
   {
@@ -53,6 +55,8 @@ const activityStats = [
 ];
 
 const ActivityStats = () => {
+  const [isRender, setIsRender] = useState(false);
+
   const renderStar = (star) => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
@@ -75,13 +79,18 @@ const ActivityStats = () => {
 
   return (
     <section className={styles.container}>
+      {isRender && <MemoModal onClose={() => setIsRender(false)} />}
       <div className={styles.pageTitleContainer}>
         <h1 className={styles.pageTitle}>최근 7일간의 활동</h1>
       </div>
       <div className={styles.innerContainer}>
         <ul>
           {activityStats.map((activityStat, key) => (
-            <li key={key} className={styles.activity}>
+            <li
+              key={key}
+              className={styles.activity}
+              onClick={() => setIsRender(true)}
+            >
               <div
                 className={styles.imageContainer}
                 style={{ backgroundImage: `url(${activityStat.image})` }}
