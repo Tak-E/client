@@ -50,7 +50,7 @@ const Main = () => {
       />
 
       <div className={styles.toolbar}>
-        <Link className={`${styles.toolbarIcon} ${styles.graph}`}>
+        <Link to="/activity-stats" className={`${styles.toolbarIcon} ${styles.graph}`}>
           <img src={graphIcon} alt="graph-icon" />
         </Link>
         <Link
