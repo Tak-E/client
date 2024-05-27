@@ -16,9 +16,10 @@ h1 {
 .activities {
   width: 1212px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   margin-bottom: 100px;
+  gap: 10px;
 }
 
 .activity {

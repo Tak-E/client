@@ -101,7 +101,7 @@ const Category = () => {
   };
 
   const handleSubmitEmotions = () => {
-    localStorage.setItem("selcted-emotions", selectedEmotions);
+    localStorage.setItem("selected-emotions", selectedEmotions);
     navigate("/activity-recommendation");
   };
 
