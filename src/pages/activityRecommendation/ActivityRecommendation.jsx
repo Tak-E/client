@@ -38,15 +38,16 @@ const ActivityRecommendation = () => {
   };
 
   return (
-    <section>
+    <section className={styles.container}>
       <div>
-        <h1>이런 활동을 해보는건 어떨까요?</h1>
+        <h1 className={styles.title}>이런 활동을 해보는건 어떨까요?</h1>
         <ul className={styles.activities}>
           {activities.map((activity, index) => (
             <li
               key={index}
-              className={`${styles.activity} ${selectedActivityIndex === index && styles.selected
-                }`}
+              className={`${styles.activity} ${
+                selectedActivityIndex === index && styles.selected
+              }`}
               onClick={() => handleActivityClick(index)}
             >
               <h2 className={styles.activityName}>{activity.title}</h2>
