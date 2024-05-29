@@ -3,6 +3,7 @@ import UserInfo from "../pages/userInfo/UserInfo";
 import ActivityRecommendation from "../pages/activityRecommendation/ActivityRecommendation";
 import Main from "../pages/main/Main";
 import Category from "../pages/category/Category";
+import ActivityStats from "../pages/activityStats/ActivityStats";
 
 const Router = () => {
   return (
@@ -15,6 +16,7 @@ const Router = () => {
           element={<ActivityRecommendation />}
         />
         <Route path="/category" element={<Category />} />
+        <Route path="/activity-stats" element={<ActivityStats />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,4 +1,4 @@
-/* Taejin Kim */
+// Byeonghyeon Kang
 
 import { useState } from "react";
 import styles from "./UserInfo.module.css";
@@ -35,7 +35,7 @@ const UserInfo = () => {
   };
 
   return (
-    <section>
+    <section className={styles.section}>
       {errorMessage !== "" && (
         <Modal onClose={() => setErrorMessage("")} description={errorMessage} />
       )}

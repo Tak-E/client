@@ -8,6 +8,7 @@
   right: 0;
   background: rgba(0, 0, 0, 0.2);
   z-index: 9999;
+  animation: fadeIn 0.3s ease-in-out forwards;
 }
 
 .container {
@@ -19,6 +20,31 @@
   height: 350px;
   background-color: #ffeead;
   border-radius: 20px;
+  box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.container.memoModal {
+  width: 802px;
+  height: 554px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .container--stress-input {
@@ -79,4 +105,14 @@
   left: 0;
   border-radius: 20px;
   background-color: #fbc20f;
+}
+
+.memo {
+  font-size: 20px;
+  background-color: transparent;
+  outline: none;
+  width: 500px;
+  height: 300px;
+  border: none;
+  margin: 20px 0 20px 0;
 }

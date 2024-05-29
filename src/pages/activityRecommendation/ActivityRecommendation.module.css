@@ -1,12 +1,14 @@
 /* Byeonghyeon Kang */
 
-section {
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #fffbda;
+  height: 100vh;
 }
 
-h1 {
+.title {
   font-size: 28px;
   font-weight: 700;
   text-align: center;

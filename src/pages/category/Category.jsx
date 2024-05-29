@@ -108,7 +108,9 @@ const Category = () => {
   return (
     <div className={styles.container}>
       <div>
-        <h1>현재 느끼는 자세한 감정을 선택해주세요!</h1>
+        <h1 className={styles.title}>
+          현재 느끼는 자세한 감정을 선택해주세요!
+        </h1>
         <ul className={styles.emotions}>
           {EMOTIONS.map((emotion) => (
             <li

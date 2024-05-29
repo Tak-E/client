@@ -61,9 +61,9 @@ const ActivityRecommendation = () => {
   };
 
   return (
-    <section>
+    <section className={styles.container}>
       <div>
-        <h1>이런 활동을 해보는건 어떨까요?</h1>
+        <h1 className={styles.title}>이런 활동을 해보는건 어떨까요?</h1>
         <ul className={styles.activities}>
           {extractActivitiesByCategories(activities, selectedCategories.current)
             .slice(0, 3)
