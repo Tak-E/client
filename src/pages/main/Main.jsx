@@ -11,10 +11,12 @@ import stressIcon from "../../assets/stress.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import StressInputModal from "../../components/Modal/StressInputModal";
+import Activity from "../../components/Activity/Activity";
 
 const Main = () => {
   const navigate = useNavigate();
   const [isShowStressInputModal, setIsShowStressInputModal] = useState(false);
+  const [activities, setActivities] = useState([]);
 
   useEffect(() => {
     if (!localStorage.getItem("userInfo")) {
@@ -22,8 +24,26 @@ const Main = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (!localStorage.getItem("selected-activities")) {
+      return;
+    }
+
+    const activities = localStorage.getItem("selected-activities");
+    // console.log(typeof activities);
+    // setActivities([...JSON.parse(activities)]);
+    // console.log(activities[0]);
+
+    setActivities([...JSON.parse(activities)]);
+  }, []);
+
   return (
     <div className={styles.container}>
+      <div className={styles.activitiesContainer}>
+        {activities.map((activity) => (
+          <Activity key={activity.id} title={activity.title} />
+        ))}
+      </div>
       {isShowStressInputModal && (
         <StressInputModal onClose={() => setIsShowStressInputModal(false)} />
       )}

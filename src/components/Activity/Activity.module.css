@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #ffd964;
+  color: #fff;
+  z-index: 99;
+  border-radius: 1rem;
+  align-items: center;
+}
+
+.btn {
+  cursor: pointer;
+  background-color: #fbc20f;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
