@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import styles from "./ActivityRecommendation.module.css";
 import activities from "../../data/activities.json";
 import { filterActivities } from "../../util";
+import { useNavigate } from "react-router-dom";
 
 // const activities = [
 //   {
@@ -34,6 +35,7 @@ import { filterActivities } from "../../util";
 
 const ActivityRecommendation = () => {
   const [selectedActivity, setSelectedActivity] = useState(null);
+  const navigate = useNavigate();
 
   const selectedCategories = useRef(
     localStorage.getItem("selected-emotions").split(",")
@@ -58,6 +60,7 @@ const ActivityRecommendation = () => {
       );
       console.log(selectedActivities);
     }
+    navigate("/");
   };
 
   console.log(filterActivities(activities, selectedCategories.current));
@@ -69,6 +72,7 @@ const ActivityRecommendation = () => {
         <ul className={styles.activities}>
           {filterActivities(activities, selectedCategories.current)
             .slice(0, 3)
+            .filter((activity) => !activity.isCompleted)
             .map((activity) => (
               <li
                 key={activity.id}

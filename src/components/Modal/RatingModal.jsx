@@ -3,9 +3,11 @@
 import styles from "./Modal.module.css";
 import ModalContainer from "./ModalContainer";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 const RatingModal = ({ onClose, id, title, memo, activity }) => {
   const [rating, setRating] = useState(0);
+  const navigate = useNavigate();
 
   const handleClose = () => {
     onClose?.();
@@ -18,10 +20,10 @@ const RatingModal = ({ onClose, id, title, memo, activity }) => {
     const ratingUpdatedActivities = [
       ...JSON.parse(selectedActivities).map((item) => {
         if (item.id == activity.id) {
-          return { ...activity, rating, isCompleted: true };
+          return { ...item, rating, isCompleted: true };
         }
 
-        return activity;
+        return item;
       }),
     ];
     localStorage.setItem(
@@ -33,7 +35,7 @@ const RatingModal = ({ onClose, id, title, memo, activity }) => {
       rating > 3 ? "preferfing-activity-type" : "dislike-activity-type",
       activity.tags[0]
     );
-
+    navigate(0);
     handleClose();
   };
 
@@ -47,7 +49,7 @@ const RatingModal = ({ onClose, id, title, memo, activity }) => {
             </h1>
             <img
               style={{ position: "initial" }}
-              width={400}
+              width={150}
               src={activity.image}
               alt="activity_cover"
             />

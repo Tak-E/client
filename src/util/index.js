@@ -26,23 +26,26 @@ export const filterActivities = (activities, categories) => {
   const dislikingActivityType = localStorage.getItem("dislike-activity-type");
   const stress = localStorage.getItem("stress");
 
-  const results = extractActivitiesByCategories(activities, categories);
+  let results = extractActivitiesByCategories(activities, categories);
   const preferringActivities = [];
   const dislikingActivities = [];
-
-  results.filter((result) => {
+  console.log("results:", results);
+  results = results.filter((result) => {
     if (result.tags.includes(preferringActivityType)) {
       preferringActivities.push(result);
-      return true;
+      return false;
     }
 
     if (result.tags.includes(dislikingActivityType)) {
       dislikingActivities.push(result);
-      return true;
+      console.log(dislikingActivities);
+      return false;
     }
 
-    return false;
+    return true;
   });
+
+  console.log("after results:", results);
 
   if (!stress) {
     return [...preferringActivities, ...results, ...dislikingActivities];
