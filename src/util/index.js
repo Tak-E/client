@@ -52,6 +52,6 @@ export const filterActivities = (activities, categories) => {
   }
 
   return [...preferringActivities, ...results, ...dislikingActivities].filter(
-    (item) => item.high_threshold <= stress <= item.low_threshold
+    (item) => item.low_threshold <= stress && stress <= item.high_threshold
   );
 };
