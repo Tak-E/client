@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import styles from "./ActivityRecommendation.module.css";
-import activities from "../../data/activities.json";
+import { activities } from "../../data/activities";
 import { filterActivities } from "../../util";
 import { useNavigate } from "react-router-dom";
 
