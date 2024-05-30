@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import styles from "./ActivityRecommendation.module.css";
 import activities from "../../data/activities.json";
-import { extractActivitiesByCategories } from "../../util";
+import { filterActivities } from "../../util";
 
 // const activities = [
 //   {
@@ -65,7 +65,7 @@ const ActivityRecommendation = () => {
       <div>
         <h1 className={styles.title}>이런 활동을 해보는건 어떨까요?</h1>
         <ul className={styles.activities}>
-          {extractActivitiesByCategories(activities, selectedCategories.current)
+          {filterActivities(activities, selectedCategories.current)
             .slice(0, 3)
             .map((activity) => (
               <li

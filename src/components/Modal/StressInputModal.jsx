@@ -5,6 +5,7 @@ import ModalContainer from "./ModalContainer";
 const StressInputModal = ({ onClose }) => {
   const [progress, setProgress] = useState(0);
   const handleClose = () => {
+    localStorage.setItem("stress", progress);
     onClose?.();
   };
 

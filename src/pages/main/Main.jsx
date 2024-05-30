@@ -41,7 +41,7 @@ const Main = () => {
     <div className={styles.container}>
       <div className={styles.activitiesContainer}>
         {activities.map((activity) => (
-          <Activity key={activity.id} title={activity.title} />
+          <Activity key={activity.id} activity={activity} />
         ))}
       </div>
       {isShowStressInputModal && (
@@ -70,7 +70,10 @@ const Main = () => {
       />
 
       <div className={styles.toolbar}>
-        <Link to="/activity-stats" className={`${styles.toolbarIcon} ${styles.graph}`}>
+        <Link
+          to="/activity-stats"
+          className={`${styles.toolbarIcon} ${styles.graph}`}
+        >
           <img src={graphIcon} alt="graph-icon" />
         </Link>
         <Link

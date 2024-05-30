@@ -59,6 +59,11 @@
   align-items: center;
 }
 
+.inner.ratingInner {
+  display: block;
+  text-align: center;
+}
+
 .innerTitle {
   font-size: 20px;
   font-weight: 600;
@@ -115,4 +120,33 @@
   height: 300px;
   border: none;
   margin: 20px 0 20px 0;
+}
+
+.ratingInput {
+  margin: 2rem 0;
+  text-align: center;
+  color: #9b9b9b;
+  font-size: 1.6rem;
+}
+
+.ratingStar {
+  content: "";
+  width: 25px;
+  height: 50px;
+  display: inline-block;
+  background-image: url("../../assets/star.svg");
+  background-position-x: 50px;
+  cursor: pointer;
+}
+
+.ratingStar:nth-child(even) {
+  background-position-x: 25px;
+}
+
+.ratingStar.selected_left {
+  background-position: 100px;
+}
+
+.ratingStar.selected_right {
+  background-position-x: 75px;
 }
