@@ -60,6 +60,8 @@ const ActivityRecommendation = () => {
     }
   };
 
+  console.log(filterActivities(activities, selectedCategories.current));
+
   return (
     <section className={styles.container}>
       <div>

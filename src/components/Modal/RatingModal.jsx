@@ -18,7 +18,7 @@ const RatingModal = ({ onClose, id, title, memo, activity }) => {
     const ratingUpdatedActivities = [
       ...JSON.parse(selectedActivities).map((item) => {
         if (item.id == activity.id) {
-          return { ...activity, rating };
+          return { ...activity, rating, isCompleted: true };
         }
 
         return activity;

@@ -40,9 +40,12 @@ const Main = () => {
   return (
     <div className={styles.container}>
       <div className={styles.activitiesContainer}>
-        {activities.map((activity) => (
-          <Activity key={activity.id} activity={activity} />
-        ))}
+        {activities.map(
+          (activity) =>
+            !activity.isCompleted && (
+              <Activity key={activity.id} activity={activity} />
+            )
+        )}
       </div>
       {isShowStressInputModal && (
         <StressInputModal onClose={() => setIsShowStressInputModal(false)} />

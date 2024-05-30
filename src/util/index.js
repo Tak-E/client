@@ -36,15 +36,19 @@ export const filterActivities = (activities, categories) => {
       return true;
     }
 
-    if (results.tags.includes(dislikingActivityType)) {
-      dislikingActivities.push(results);
+    if (result.tags.includes(dislikingActivityType)) {
+      dislikingActivities.push(result);
       return true;
     }
 
     return false;
   });
 
-  return [...preferringActivities, results, ...dislikingActivities].map(
+  if (!stress) {
+    return [...preferringActivities, ...results, ...dislikingActivities];
+  }
+
+  return [...preferringActivities, ...results, ...dislikingActivities].filter(
     (item) => item.high_threshold <= stress <= item.low_threshold
   );
 };
