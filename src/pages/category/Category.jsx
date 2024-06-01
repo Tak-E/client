@@ -7,88 +7,64 @@ import { useNavigate } from "react-router-dom";
 const EMOTIONS = [
   {
     id: 0,
-    title: "신나는",
-  },
-  {
-    id: 1,
-    title: "쾌활한",
-  },
-  {
-    id: 2,
-    title: "설레는",
-  },
-  {
-    id: 3,
-    title: "슬픈",
-  },
-  {
-    id: 4,
     title: "우울한",
   },
   {
-    id: 5,
-    title: "열망적인",
-  },
-  {
-    id: 6,
-    title: "감동한",
-  },
-  {
-    id: 7,
-    title: "대견한",
-  },
-  {
-    id: 8,
-    title: "즐거운",
-  },
-  {
-    id: 9,
-    title: "의욕적인",
-  },
-  {
-    id: 10,
-    title: "후련한",
-  },
-  {
-    id: 11,
-    title: "고민되는",
-  },
-  {
-    id: 12,
-    title: "행복한",
-  },
-  {
-    id: 13,
-    title: "감사한",
-  },
-  {
-    id: 14,
-    title: "평온한",
-  },
-  {
-    id: 15,
-    title: "짜증나는",
-  },
-  {
-    id: 16,
-    title: "괴로운",
-  },
-  {
-    id: 17,
-    title: "속상한",
-  },
-  {
-    id: 18,
+    id: 1,
     title: "분한",
   },
   {
-    id: 19,
+    id: 2,
     title: "후회되는",
   },
   {
-    id: 20,
+    id: 3,
+    title: "서운한",
+  },
+  {
+    id: 4,
     title: "두려운",
   },
+  {
+    id: 5,
+    title: "의욕적인",
+  },
+  {
+    id: 6,
+    title: "즐거운",
+  },
+  {
+    id: 7,
+    title: "설레는",
+  },
+  {
+    id: 8,
+    title: "기쁜",
+  },
+  {
+    id: 9,
+    title: "행복한",
+  },
+  {
+    id: 10,
+    title: "평온한",
+  },
+  {
+    id: 11,
+    title: "여유로운",
+  },
+  {
+    id: 12,
+    title: "나른한",
+  },
+  {
+    id: 13,
+    title: "경멸스러운",
+  },
+  {
+    id: 14,
+    title: "안심되는",
+  }
 ];
 
 const Category = () => {
