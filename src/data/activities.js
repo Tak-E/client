@@ -24,7 +24,7 @@ import {
 export const activities = [
   {
     id: 0,
-    title: "펀치백이나 쿠션을 주먹으로 쳐보기",
+    title: "테스트입니다",
     category: ["분한"],
     high_threshold: 40,
     low_threshold: 10,
