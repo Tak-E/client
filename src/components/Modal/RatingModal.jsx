@@ -1,5 +1,6 @@
 // Byeonghyeon Kang
 
+import getActivityCover from "../../data/getActivityCover";
 import styles from "./Modal.module.css";
 import ModalContainer from "./ModalContainer";
 import { useState } from "react";
@@ -50,7 +51,7 @@ const RatingModal = ({ onClose, id, title, memo, activity }) => {
             <img
               style={{ position: "initial" }}
               width={150}
-              src={activity.image}
+              src={getActivityCover(activity.tags)}
               alt="activity_cover"
             />
             <div className={styles.ratingInput}>

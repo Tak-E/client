@@ -6,6 +6,7 @@ import HalfStar from "../../assets/star--half.svg";
 import ActiveStar from "../../assets/star--active.svg";
 import { useEffect, useState } from "react";
 import MemoModal from "../../components/Modal/MemoModal";
+import getActivityCover from "../../data/getActivityCover";
 
 const ActivityStats = () => {
   const [activities, setActivities] = useState([]);
@@ -84,7 +85,9 @@ const ActivityStats = () => {
               >
                 <div
                   className={styles.imageContainer}
-                  style={{ backgroundImage: `url(${activity.image})` }}
+                  style={{
+                    backgroundImage: `url(${getActivityCover(activity.tags)})`,
+                  }}
                 ></div>
                 <div>
                   <div className={styles.activityInfo}>
