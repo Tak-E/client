@@ -5,6 +5,7 @@ import styles from "./ActivityRecommendation.module.css";
 import { activities } from "../../data/activities";
 import { filterActivities } from "../../util";
 import { useNavigate } from "react-router-dom";
+import getActivityCover from "../../data/getActivityCover";
 
 // const activities = [
 //   {
@@ -88,7 +89,9 @@ const ActivityRecommendation = () => {
                 <h2 className={styles.activityName}>{activity.title}</h2>
                 <div
                   className={styles.activityImage}
-                  style={{ backgroundImage: `url(${activity.image})` }}
+                  style={{
+                    backgroundImage: `url(${getActivityCover(activity.tags)})`,
+                  }}
                 ></div>
                 <p className={styles.description}>{activity.description}</p>
               </li>

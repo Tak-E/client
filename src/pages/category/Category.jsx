@@ -64,7 +64,7 @@ const EMOTIONS = [
   {
     id: 14,
     title: "안심되는",
-  }
+  },
 ];
 
 const Category = () => {
@@ -77,6 +77,10 @@ const Category = () => {
   };
 
   const handleSubmitEmotions = () => {
+    if (selectedEmotions.length === 0) {
+      alert("감정을 1개 이상 선택해주세요.");
+      return;
+    }
     localStorage.setItem("selected-emotions", selectedEmotions);
     setSelectedEmotions([]);
     navigate("/activity-recommendation");
