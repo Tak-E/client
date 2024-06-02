@@ -46,6 +46,10 @@ const ActivityRecommendation = () => {
   };
 
   const handleActivityChoice = () => {
+    if (selectedActivity === null) {
+      alert("활동을 선택해주세요");
+      return;
+    }
     if (!localStorage.getItem("selected-activities")) {
       localStorage.setItem(
         "selected-activities",
