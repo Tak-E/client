@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import styles from "./Category.module.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const EMOTIONS = [
   {
@@ -103,30 +103,43 @@ const Category = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div>
-        <h1 className={styles.title}>
-          현재 느끼는 자세한 감정을 선택해주세요!
-        </h1>
-        <ul className={styles.emotions}>
-          {EMOTIONS.map((emotion) => (
-            <li
-              key={emotion.id}
-              className={styles.emotion}
-              onClick={handleSelectEmotion}
-            >
-              {emotion.title}
-            </li>
-          ))}
-        </ul>
-        <button className={styles.button} onClick={handleSubmitEmotions}>
-          선택완료
-        </button>
-        <div className={styles.skipContainer} onClick={handleSkip}>
-          <button className={styles.skip}>그냥 건너뛰기 할래요!</button>
+    <>
+      <Link
+        style={{
+          position: "absolute",
+          margin: "10px",
+          color: "#FBC20F",
+          fontSize: "20px",
+        }}
+        to="/"
+      >
+        {"<"} 뒤로가기
+      </Link>
+      <div className={styles.container}>
+        <div>
+          <h1 className={styles.title}>
+            현재 느끼는 자세한 감정을 선택해주세요!
+          </h1>
+          <ul className={styles.emotions}>
+            {EMOTIONS.map((emotion) => (
+              <li
+                key={emotion.id}
+                className={styles.emotion}
+                onClick={handleSelectEmotion}
+              >
+                {emotion.title}
+              </li>
+            ))}
+          </ul>
+          <button className={styles.button} onClick={handleSubmitEmotions}>
+            선택완료
+          </button>
+          <div className={styles.skipContainer} onClick={handleSkip}>
+            <button className={styles.skip}>그냥 건너뛰기 할래요!</button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
