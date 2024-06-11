@@ -17,6 +17,11 @@ const MemoModal = ({ onClose, id, title, updateMemo }) => {
   };
 
   const handleClick = () => {
+    if (inputMemo === "") {
+      setInputMemo("클릭하여 수행한 활동을 기록해보세요!");
+      handleClose();
+      return;
+    }
     const activities = JSON.parse(localStorage.getItem("selected-activities"));
 
     const updatedActivities = activities.map((activity) => {
