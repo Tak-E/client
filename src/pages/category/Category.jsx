@@ -86,6 +86,10 @@ const Category = () => {
     navigate("/activity-recommendation");
   };
 
+  const handleSkip = () => {
+    navigate("/");
+  };
+
   return (
     <div className={styles.container}>
       <div>
@@ -106,6 +110,9 @@ const Category = () => {
         <button className={styles.button} onClick={handleSubmitEmotions}>
           선택완료
         </button>
+        <div className={styles.skipContainer} onClick={handleSkip}>
+          <button className={styles.skip}>그냥 건너뛰기 할래요!</button>
+        </div>
       </div>
     </div>
   );
