@@ -74,6 +74,10 @@ const ActivityRecommendation = () => {
     .slice(0, 3)
     .filter((activity) => !activity.isCompleted);
 
+  const handleNavigateCategory = () => {
+    navigate("/category");
+  };
+
   return (
     <section className={styles.container}>
       <div>
@@ -90,22 +94,28 @@ const ActivityRecommendation = () => {
                 }`}
                 onClick={() => handleActivityClick(activity)}
               >
-                <h2 className={styles.activityName}>{activity.title}</h2>
                 <div
                   className={styles.activityImage}
                   style={{
                     backgroundImage: `url(${getActivityCover(activity.tags)})`,
                   }}
                 ></div>
+                <h2 className={styles.activityName}>{activity.title}</h2>
                 <p className={styles.description}>{activity.description}</p>
               </li>
             ))}
           </ul>
         )}
-        {filteredActivities.length > 1 && (
+        {filteredActivities.length > 1 ? (
           <div className={styles.buttonContainer}>
             <button className={styles.button} onClick={handleActivityChoice}>
               이걸로 할게요
+            </button>
+          </div>
+        ) : (
+          <div className={styles.buttonContainer}>
+            <button className={styles.button} onClick={handleNavigateCategory}>
+              다시 선택하기
             </button>
           </div>
         )}
