@@ -93,3 +93,29 @@ img.alignCenter {
   margin-top: 1rem;
   width: 20rem;
 }
+
+.toolbarIcon {
+  position: relative;
+}
+
+.toolbarIcon:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  white-space: nowrap;
+  transition: opacity 0.3s;
+  z-index: 1;
+}

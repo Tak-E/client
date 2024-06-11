@@ -66,6 +66,7 @@ const Main = () => {
         alt="character-img"
       />
       <img className={styles.sun} src={sunImg} alt="sun-img" />
+
       <img
         className={`${styles.toggle} ${styles.alignCenter}`}
         src={toggleImg}
@@ -78,18 +79,21 @@ const Main = () => {
           className={`${styles.toolbarIcon} ${styles.graph}`}
         >
           <img src={graphIcon} alt="graph-icon" />
+          <span className={styles.tooltip}>활동 기록</span>
         </Link>
         <Link
           to="/category"
           className={`${styles.toolbarIcon} ${styles.smile}`}
         >
           <img src={smileIcon} alt="smile-icon" />
+          <span className={styles.tooltip}>감정 선택</span>
         </Link>
         <button
           onClick={() => setIsShowStressInputModal(true)}
           className={`${styles.toolbarIcon} ${styles.stress}`}
         >
           <img src={stressIcon} alt="stress-icon" />
+          <span className={styles.tooltip}>스트레스 지수 입력</span>
         </button>
       </div>
     </div>
