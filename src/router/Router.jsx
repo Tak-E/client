@@ -4,6 +4,7 @@ import ActivityRecommendation from "../pages/activityRecommendation/ActivityReco
 import Main from "../pages/main/Main";
 import Category from "../pages/category/Category";
 import ActivityStats from "../pages/activityStats/ActivityStats";
+import Emotion from "../pages/emotion/Emotion";
 
 const Router = () => {
   return (
@@ -16,6 +17,7 @@ const Router = () => {
           element={<ActivityRecommendation />}
         />
         <Route path="/category" element={<Category />} />
+        <Route path="/emotion" element={<Emotion />} />
         <Route path="/activity-stats" element={<ActivityStats />} />
       </Routes>
     </BrowserRouter>
