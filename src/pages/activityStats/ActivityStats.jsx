@@ -7,6 +7,7 @@ import ActiveStar from "../../assets/star--active.svg";
 import { useEffect, useState } from "react";
 import MemoModal from "../../components/Modal/MemoModal";
 import getActivityCover from "../../data/getActivityCover";
+import { Link } from "react-router-dom";
 
 const ActivityStats = () => {
   const [activities, setActivities] = useState([]);
@@ -72,49 +73,64 @@ const ActivityStats = () => {
   };
 
   return (
-    <section className={styles.container}>
-      <div className={styles.baseContainer}>
-        <div className={styles.pageTitleContainer}>
-          <h1 className={styles.pageTitle}>최근 7일간의 활동</h1>
-        </div>
-        <div className={styles.innerContainer}>
-          <ul>
-            {activities.map((activity, key) => (
-              <li
-                key={key}
-                className={styles.activity}
-                onClick={() => handleActivityClick(activity)}
-              >
-                <div
-                  className={styles.imageContainer}
-                  style={{
-                    backgroundImage: `url(${getActivityCover(activity.tags)})`,
-                  }}
-                ></div>
-                <div>
-                  <div className={styles.activityInfo}>
-                    <h2 className={styles.title}>{activity.title}</h2>
-                    <ul className={styles.stars}>
-                      {renderStar(activity.rating)}
-                    </ul>
+    <>
+      <Link
+        style={{
+          position: "absolute",
+          margin: "10px",
+          color: "#FBC20F",
+          fontSize: "20px",
+        }}
+        to="/"
+      >
+        {"<"} 뒤로가기
+      </Link>
+      <section className={styles.container}>
+        <div className={styles.baseContainer}>
+          <div className={styles.pageTitleContainer}>
+            <h1 className={styles.pageTitle}>최근 7일간의 활동</h1>
+          </div>
+          <div className={styles.innerContainer}>
+            <ul>
+              {activities.map((activity, key) => (
+                <li
+                  key={key}
+                  className={styles.activity}
+                  onClick={() => handleActivityClick(activity)}
+                >
+                  <div
+                    className={styles.imageContainer}
+                    style={{
+                      backgroundImage: `url(${getActivityCover(
+                        activity.tags
+                      )})`,
+                    }}
+                  ></div>
+                  <div>
+                    <div className={styles.activityInfo}>
+                      <h2 className={styles.title}>{activity.title}</h2>
+                      <ul className={styles.stars}>
+                        {renderStar(activity.rating)}
+                      </ul>
+                    </div>
+                    <p className={styles.memo}>{activity.memo}</p>
                   </div>
-                  <p className={styles.memo}>{activity.memo}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
+          {isModalOpen && selectedActivity && (
+            <MemoModal
+              onClose={handleCloseModal}
+              title={selectedActivity.title}
+              memo={selectedActivity.memo}
+              id={selectedActivity.id}
+              updateMemo={updateMemo}
+            />
+          )}
         </div>
-        {isModalOpen && selectedActivity && (
-          <MemoModal
-            onClose={handleCloseModal}
-            title={selectedActivity.title}
-            memo={selectedActivity.memo}
-            id={selectedActivity.id}
-            updateMemo={updateMemo}
-          />
-        )}
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
