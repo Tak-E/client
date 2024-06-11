@@ -4,16 +4,25 @@ import ModalContainer from "./ModalContainer";
 
 const StressInputModal = ({ onClose }) => {
   const [progress, setProgress] = useState(0);
-  const handleClose = () => {
-    localStorage.setItem("stress", progress);
-    onClose?.();
+  const [isSelected, setIsSelected] = useState(0);
+
+  const handleProgressbarClick = () => {
+    setIsSelected(true);
   };
 
   const handleMouseMove = (e) => {
+    if (isSelected) {
+      return;
+    }
     const x = e.clientX - document.getElementById("stress-modal").offsetLeft;
     const xconvert = (x + 217) / 433;
     const finalx = xconvert.toFixed(2) * 100;
     setProgress(finalx);
+  };
+
+  const handleSelectClick = () => {
+    localStorage.setItem("stress", progress);
+    onClose?.();
   };
 
   return (
@@ -29,7 +38,7 @@ const StressInputModal = ({ onClose }) => {
             </h2>
             <div
               className={styles.stressInput}
-              onClick={handleClose}
+              onClick={handleProgressbarClick}
               id="stressInput"
               onMouseMove={handleMouseMove}
             >
@@ -37,6 +46,14 @@ const StressInputModal = ({ onClose }) => {
                 style={{ width: `${progress}%` }}
                 className={styles.progressBar}
               ></div>
+            </div>
+            <div style={{ marginTop: "30px", display: "flex", gap: "10px" }}>
+              <button className={styles.button} onClick={onClose}>
+                취소
+              </button>
+              <button className={styles.button} onClick={handleSelectClick}>
+                선택완료
+              </button>
             </div>
           </div>
         </div>

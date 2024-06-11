@@ -48,7 +48,8 @@
 }
 
 .container--stress-input {
-  height: 150px;
+  padding: 20px;
+  height: 200px;
 }
 
 .inner {

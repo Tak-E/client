@@ -35,6 +35,8 @@ const Main = () => {
   const [isShowStressInputModal, setIsShowStressInputModal] = useState(false);
   const [activities, setActivities] = useState([]);
   const [speechText, setSpeechText] = useState("");
+  const [isHiding, setIsHiding] = useState(false);
+
   const sunRef = useRef(null);
 
   useEffect(() => {
@@ -97,6 +99,11 @@ const Main = () => {
         className={`${styles.control} ${styles.alignCenter}`}
         src={controlImg}
         alt="control-img"
+        style={
+          isHiding
+            ? { opacity: 0, transition: "opacity .1s" }
+            : { opacity: 1, transition: "opacity .1s" }
+        }
       />
       <div
         className={`${styles.speechBubbleContainer}`}
@@ -117,17 +124,20 @@ const Main = () => {
         alt="sun-img"
         onClick={handleAnimationSun}
       />
-
-      <img
-        className={`${styles.toggle} ${styles.alignCenter}`}
-        src={toggleImg}
-        alt="toolbar-img"
-      />
+      {/* <button>
+        <img
+          className={`${styles.toggle} ${styles.alignCenter}`}
+          src={toggleImg}
+          onClick={() => console.log("hi")}
+          alt="toolbar-img"
+        />
+      </button> */}
 
       <div className={styles.toolbar}>
         <Link
           to="/activity-stats"
           className={`${styles.toolbarIcon} ${styles.graph}`}
+          style={isHiding ? { opacity: 0 } : { opacity: 1 }}
         >
           <img src={graphIcon} alt="graph-icon" />
           <span className={styles.tooltip}>활동 기록</span>
@@ -135,6 +145,7 @@ const Main = () => {
         <Link
           to="/category"
           className={`${styles.toolbarIcon} ${styles.smile}`}
+          style={isHiding ? { opacity: 0 } : { opacity: 1 }}
         >
           <img src={smileIcon} alt="smile-icon" />
           <span className={styles.tooltip}>감정 선택</span>
@@ -142,9 +153,27 @@ const Main = () => {
         <button
           onClick={() => setIsShowStressInputModal(true)}
           className={`${styles.toolbarIcon} ${styles.stress}`}
+          style={isHiding ? { opacity: 0 } : { opacity: 1 }}
         >
           <img src={stressIcon} alt="stress-icon" />
           <span className={styles.tooltip}>스트레스 지수 입력</span>
+        </button>
+        <button
+          style={{
+            cursor: "pointer",
+            backgroundColor: "transparent",
+            border: "none",
+            position: "absolute",
+            top: "86px",
+            left: "94px",
+          }}
+          onClick={() => setIsHiding((prev) => !prev)}
+        >
+          <img
+            // className={`${styles.toggle} ${styles.alignCenter}`}
+            src={toggleImg}
+            alt="toolbar-img"
+          />
         </button>
       </div>
     </div>
