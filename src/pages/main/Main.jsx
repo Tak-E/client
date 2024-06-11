@@ -3,13 +3,13 @@
 import styles from "./Main.module.css";
 import controlImg from "../../assets/control.svg";
 import characterImg from "../../assets/character.svg";
-import sunImg from "../../assets/sun.svg";
+import sunImg from "../../assets/sun2.png";
 import toggleImg from "../../assets/toolbar.svg";
 import graphIcon from "../../assets/graph.svg";
 import smileIcon from "../../assets/smile.svg";
 import stressIcon from "../../assets/stress.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import StressInputModal from "../../components/Modal/StressInputModal";
 import Activity from "../../components/Activity/Activity";
 import SpeechBubble from "../../assets/speech-bubble.png";
@@ -35,6 +35,7 @@ const Main = () => {
   const [isShowStressInputModal, setIsShowStressInputModal] = useState(false);
   const [activities, setActivities] = useState([]);
   const [speechText, setSpeechText] = useState("");
+  const sunRef = useRef(null);
 
   useEffect(() => {
     if (!localStorage.getItem("userInfo")) {
@@ -63,6 +64,16 @@ const Main = () => {
 
     setActivities([...JSON.parse(activities)]);
   }, []);
+
+  const handleAnimationSun = () => {
+    const sun = sunRef.current;
+    if (sun) {
+      sun.classList.add(styles.pulse);
+      setTimeout(() => {
+        sun.classList.remove(styles.pulse);
+      }, 1000);
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -99,7 +110,13 @@ const Main = () => {
         src={characterImg}
         alt="character-img"
       />
-      <img className={styles.sun} src={sunImg} alt="sun-img" />
+      <img
+        ref={sunRef}
+        className={styles.sun}
+        src={sunImg}
+        alt="sun-img"
+        onClick={handleAnimationSun}
+      />
 
       <img
         className={`${styles.toggle} ${styles.alignCenter}`}
