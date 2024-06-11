@@ -21,7 +21,7 @@ import getActivityCover from "../../data/getActivityCover";
 //       "https://mediahub.seoul.go.kr/uploads/mediahub/2022/04/jqPSSIsMrKiOfOZEvcRVkTCdhYrzBWuh.png",
 //     title: "따듯한 차 한잔 마시기",
 //     description: "차 한잔을 마시면서 우울한 마음을 진정시켜보세요.",
-//     happyStatus: "행복지수(int)",
+//     happyStatus: "행복지수(vint)",
 //     emotion: "감정상태",
 //   },
 //   {

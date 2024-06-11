@@ -19,7 +19,9 @@ const ActivityStats = () => {
     }
 
     const activities = JSON.parse(localStorage.getItem("selected-activities"));
-    setActivities(activities.filter((activity) => activity.isCompleted));
+    setActivities(
+      activities.filter((activity) => activity.isCompleted).reverse()
+    );
   }, []);
 
   const renderStar = (star) => {
