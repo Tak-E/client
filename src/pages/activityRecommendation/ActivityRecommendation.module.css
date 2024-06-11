@@ -24,6 +24,13 @@
   gap: 10px;
 }
 
+.empty {
+  text-align: center;
+  margin-bottom: 100px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
 .activity {
   cursor: pointer;
   box-sizing: border-box;

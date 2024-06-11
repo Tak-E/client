@@ -63,22 +63,26 @@ const ActivityRecommendation = () => {
         "selected-activities",
         JSON.stringify([...JSON.parse(selectedActivities), selectedActivity])
       );
-      console.log(selectedActivities);
     }
     navigate("/");
   };
 
-  console.log(filterActivities(activities, selectedCategories.current));
+  const filteredActivities = filterActivities(
+    activities,
+    selectedCategories.current
+  )
+    .slice(0, 3)
+    .filter((activity) => !activity.isCompleted);
 
   return (
     <section className={styles.container}>
       <div>
         <h1 className={styles.title}>이런 활동을 해보는건 어떨까요?</h1>
-        <ul className={styles.activities}>
-          {filterActivities(activities, selectedCategories.current)
-            .slice(0, 3)
-            .filter((activity) => !activity.isCompleted)
-            .map((activity) => (
+        {filteredActivities.length <= 1 ? (
+          <p className={styles.empty}>추천할 활동이 없습니다!</p>
+        ) : (
+          <ul className={styles.activities}>
+            {filteredActivities.map((activity) => (
               <li
                 key={activity.id}
                 className={`${styles.activity} ${
@@ -96,12 +100,15 @@ const ActivityRecommendation = () => {
                 <p className={styles.description}>{activity.description}</p>
               </li>
             ))}
-        </ul>
-        <div className={styles.buttonContainer}>
-          <button className={styles.button} onClick={handleActivityChoice}>
-            이걸로 할게요
-          </button>
-        </div>
+          </ul>
+        )}
+        {filteredActivities.length > 1 && (
+          <div className={styles.buttonContainer}>
+            <button className={styles.button} onClick={handleActivityChoice}>
+              이걸로 할게요
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
