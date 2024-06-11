@@ -1,4 +1,5 @@
 .container {
+  width: 300px;
   display: flex;
   justify-content: space-between;
   padding: 20px;
@@ -9,7 +10,12 @@
   align-items: center;
 }
 
+.title {
+  width: 200px;
+}
+
 .btn {
+  width: 80px;
   cursor: pointer;
   background-color: #fbc20f;
   color: #fff;
