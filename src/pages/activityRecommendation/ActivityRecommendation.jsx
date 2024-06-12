@@ -114,7 +114,10 @@ const ActivityRecommendation = () => {
                       )})`,
                     }}
                   ></div>
-                  <h2 className={styles.activityName}>{activity.title}</h2>
+                  <h2 className={styles.activityName}>
+                    {activity.title}
+                    <p className={styles.tooltip}>{activity.title}</p>
+                  </h2>
                   <p className={styles.description}>{activity.description}</p>
                 </li>
               ))}

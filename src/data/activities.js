@@ -183,7 +183,7 @@ export const activities = [
   },
   {
     id: 14,
-    title: "노래를 부르거나 악기를 연주하여 감정을 표현하기",
+    title: "노래를 부르거나 악기를 연주하여 감정을 표현하기 ",
     category: ["안심되는", "행복한"],
     tags: ["음악"],
     high_threshold: 100,
