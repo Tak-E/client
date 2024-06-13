@@ -3,6 +3,7 @@
 import { useState } from "react";
 import styles from "./Category.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import Modal from "../../components/Modal/Modal";
 
 const EMOTIONS = [
   {
@@ -80,8 +81,9 @@ const EMOTIONS = [
 ];
 
 const Category = () => {
-  const [selectedEmotions, setSelectedEmotions] = useState([]);
   const navigate = useNavigate();
+  const [selectedEmotions, setSelectedEmotions] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSelectEmotion = (e) => {
     e.currentTarget.classList.toggle(styles.selected);
@@ -90,9 +92,10 @@ const Category = () => {
 
   const handleSubmitEmotions = () => {
     if (selectedEmotions.length === 0) {
-      alert("감정을 1개 이상 선택해주세요.");
+      setErrorMessage("감정을 1개 이상 선택해주세요.");
       return;
     }
+    
     localStorage.setItem("selected-emotions", selectedEmotions);
     setSelectedEmotions([]);
     navigate("/activity-recommendation");
@@ -116,6 +119,12 @@ const Category = () => {
         {"<"} 뒤로가기
       </Link>
       <div className={styles.container}>
+        {errorMessage !== "" && (
+          <Modal
+            onClose={() => setErrorMessage("")}
+            description={errorMessage}
+          />
+        )}
         <div>
           <h1 className={styles.title}>
             현재 느끼는 자세한 감정을 선택해주세요!

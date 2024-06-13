@@ -143,7 +143,7 @@ const Main = () => {
           <span className={styles.tooltip}>활동 기록</span>
         </Link>
         <Link
-          to="/category"
+          to="/emotion"
           className={`${styles.toolbarIcon} ${styles.smile}`}
           style={isHiding ? { opacity: 0 } : { opacity: 1 }}
         >
