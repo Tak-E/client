@@ -1,9 +1,9 @@
 // Byeonghyeon Kang
 
 import styles from "./ActivityStats.module.css";
-import DefaultStar from "../../assets/star--default.svg";
-import HalfStar from "../../assets/star--half.svg";
-import ActiveStar from "../../assets/star--active.svg";
+// import DefaultStar from "../../assets/star--default.svg";
+// import HalfStar from "../../assets/star--half.svg";
+// import ActiveStar from "../../assets/star--active.svg";
 import { useEffect, useState } from "react";
 import MemoModal from "../../components/Modal/MemoModal";
 import getActivityCover from "../../data/getActivityCover";
@@ -25,34 +25,34 @@ const ActivityStats = () => {
     );
   }, []);
 
-  const renderStar = (star) => {
-    const stars = [];
-    const fullStars = Math.floor(star);
-    const hasHalfStar = star % 1 !== 0;
+  // const renderStar = (star) => {
+  //   const stars = [];
+  //   const fullStars = Math.floor(star);
+  //   const hasHalfStar = star % 1 !== 0;
 
-    for (let i = 0; i < 5; i++) {
-      if (i < fullStars) {
-        stars.push(
-          <li key={i} className={styles.list}>
-            <img src={ActiveStar} alt="Active star" className={styles.star} />
-          </li>
-        );
-      } else if (i === fullStars && hasHalfStar) {
-        stars.push(
-          <li key={i} className={styles.list}>
-            <img src={HalfStar} alt="Half star" className={styles.star} />
-          </li>
-        );
-      } else {
-        stars.push(
-          <li key={i} className={styles.list}>
-            <img src={DefaultStar} alt="Default star" className={styles.star} />
-          </li>
-        );
-      }
-    }
-    return stars;
-  };
+  //   for (let i = 0; i < 5; i++) {
+  //     if (i < fullStars) {
+  //       stars.push(
+  //         <li key={i} className={styles.list}>
+  //           <img src={ActiveStar} alt="Active star" className={styles.star} />
+  //         </li>
+  //       );
+  //     } else if (i === fullStars && hasHalfStar) {
+  //       stars.push(
+  //         <li key={i} className={styles.list}>
+  //           <img src={HalfStar} alt="Half star" className={styles.star} />
+  //         </li>
+  //       );
+  //     } else {
+  //       stars.push(
+  //         <li key={i} className={styles.list}>
+  //           <img src={DefaultStar} alt="Default star" className={styles.star} />
+  //         </li>
+  //       );
+  //     }
+  //   }
+  //   return stars;
+  // };
 
   const handleActivityClick = (activity) => {
     setSelectedActivity(activity);
@@ -109,8 +109,15 @@ const ActivityStats = () => {
                   <div>
                     <div className={styles.activityInfo}>
                       <h2 className={styles.title}>{activity.title}</h2>
-                      <ul className={styles.stars}>
+                      {/* <ul className={styles.stars}>
                         {renderStar(activity.rating)}
+                      </ul> */}
+                      <ul className={styles.tags}>
+                        {activity.category.map((tag, i) => (
+                          <li key={i} className={styles.tag}>
+                            {tag}
+                          </li>
+                        ))}
                       </ul>
                     </div>
                     <p className={styles.memo}>{activity.memo}</p>

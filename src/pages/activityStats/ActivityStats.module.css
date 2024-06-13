@@ -94,3 +94,14 @@
   font-weight: 500;
   color: #404040;
 }
+
+.tags {
+  display: flex;
+  gap: 10px;
+}
+
+.tag {
+  background-color: #fbc20f;
+  padding: 5px 8px;
+  border-radius: 10px;
+}
