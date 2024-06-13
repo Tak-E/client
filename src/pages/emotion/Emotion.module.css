@@ -1,70 +1,39 @@
 .container {
   height: 100vh;
   background-color: #fffbda;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .title {
+  padding-top: 119px;
   font-size: 28px;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 77px;
 }
 
-.emotionsImageContainer {
-  position: relative;
+.innerContainer {
+  margin-top: 244px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: 204px;
-  margin-bottom: 204px;
+  gap: 27px;
+  margin-bottom: 255px;
 }
 
 .emotionButton {
-  position: absolute;
   width: 120px;
-  height: 125.51px;
-  background-color: transparent;
-  border: none;
+  height: 120px;
   cursor: pointer;
-  border-radius: 50%;
-  z-index: 2;
+  opacity: 0.5;
 }
 
-.emotionButton.active {
-  background-color: rgba(30, 30, 30);
+.emotionButton.selected {
+  opacity: 1;
 }
 
-.emotionButton:nth-child(1) {
-  top: -60px;
-  left: 18%;
-}
-
-.emotionButton:nth-child(2) {
-  top: -60px;
-  left: 31%;
-}
-
-.emotionButton:nth-child(3) {
-  top: -60px;
-  left: 44%;
-}
-
-.emotionButton:nth-child(4) {
-  top: -60px;
-  left: 56%;
-}
-
-.emotionButton:nth-child(5) {
-  top: -60px;
-  left: 69%;
-}
-
-.emotionsImage {
-  width: 600px;
-  z-index: 1;
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button {
@@ -80,7 +49,6 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   transition: all 0.2s;
-  margin: 60px auto 0;
   display: block;
 }
 

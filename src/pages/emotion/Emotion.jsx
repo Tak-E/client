@@ -1,36 +1,89 @@
 import styles from "./Emotion.module.css";
-import EmotionsImage from "../../assets/emotions.png";
+import veryBadImage from "../../assets/emotions/very-bad.png";
+import badImage from "../../assets/emotions/bad.png";
+import sosoImage from "../../assets/emotions/soso.png";
+import happyImage from "../../assets/emotions/happy.png";
+import veryHappyImage from "../../assets/emotions/very-happy.png";
+
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Modal from "../../components/Modal/Modal";
+
+const buttonEmotion = [
+  {
+    id: 1,
+    image: veryBadImage,
+    emotion: "negative",
+  },
+  {
+    id: 2,
+    image: badImage,
+    emotion: "negative",
+  },
+  {
+    id: 3,
+    image: sosoImage,
+    emotion: "normal",
+  },
+  {
+    id: 4,
+    image: happyImage,
+    emotion: "positive",
+  },
+  {
+    id: 5,
+    image: veryHappyImage,
+    emotion: "positive",
+  },
+];
 
 const Emotion = () => {
+  const navigate = useNavigate();
+  const [selectedEmotionId, setSelectedEmotionId] = useState(null);
   const [selectedEmotion, setSelectedEmotion] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = () => {
-    console.log("hello world!");
+    localStorage.setItem("currentEmotion", selectedEmotion);
+
+    if (selectedEmotion === "") {
+      setErrorMessage("감정을 선택해주세요!"  );
+      return;
+    }
+
+    navigate("/category");
   };
 
-  const handleClickEmotion = (emotion) => {
-    console.log(emotion);
+  const handleClickEmotion = (id, emotion) => {
+    setSelectedEmotionId(id);
+    setSelectedEmotion(emotion);
   };
-
-  const buttonEmotion = ["부정", "부정", "보통", "긍정", "긍정"];
 
   return (
     <div className={styles.container}>
+      {errorMessage !== "" && (
+        <Modal onClose={() => setErrorMessage("")} description={errorMessage} />
+      )}
       <h1 className={styles.title}>현재 느끼는 감정을 선택해주세요!</h1>
-      <div className={styles.emotionsImageContainer}>
-        {buttonEmotion.map((emotion, index) => (
-          <button
-            key={index}
-            className={`${styles.emotionButton} ${styles.active}`}
-            onClick={() => handleClickEmotion(emotion)}
-          />
+      <div className={styles.innerContainer}>
+        {buttonEmotion.map(({ id, image, emotion }) => (
+          <div
+            key={id}
+            className={`${styles.emotionButton} ${
+              selectedEmotionId === id ? styles.selected : ""
+            }`}
+            alt={`감정상태는 ${emotion}}`}
+            onClick={() => handleClickEmotion(id, emotion)}
+          >
+            <img src={image} />
+          </div>
         ))}
-        <img src={EmotionsImage} className={styles.emotionsImage} />
       </div>
-      <button className={styles.button} onClick={handleSubmit}>
-        선택완료
-      </button>
+      <div className={styles.buttonContainer}>
+        <button className={styles.button} onClick={handleSubmit}>
+          선택완료
+        </button>
+      </div>
     </div>
   );
 };
