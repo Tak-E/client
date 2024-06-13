@@ -5,7 +5,7 @@ import sosoImage from "../../assets/emotions/soso.png";
 import happyImage from "../../assets/emotions/happy.png";
 import veryHappyImage from "../../assets/emotions/very-happy.png";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
 
 const buttonEmotion = [
@@ -46,7 +46,7 @@ const Emotion = () => {
     localStorage.setItem("currentEmotion", selectedEmotion);
 
     if (selectedEmotion === "") {
-      setErrorMessage("감정을 선택해주세요!"  );
+      setErrorMessage("감정을 선택해주세요!");
       return;
     }
 
@@ -60,6 +60,17 @@ const Emotion = () => {
 
   return (
     <div className={styles.container}>
+      <Link
+        style={{
+          position: "absolute",
+          margin: "10px",
+          color: "#FBC20F",
+          fontSize: "20px",
+        }}
+        to="/"
+      >
+        {"<"} 뒤로가기
+      </Link>
       {errorMessage !== "" && (
         <Modal onClose={() => setErrorMessage("")} description={errorMessage} />
       )}
