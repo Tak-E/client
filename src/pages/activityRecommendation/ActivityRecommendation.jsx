@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import styles from "./ActivityRecommendation.module.css";
 import { activities } from "../../data/activities";
 import { filterActivities } from "../../util";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import getActivityCover from "../../data/getActivityCover";
 
 // const activities = [
@@ -79,48 +79,69 @@ const ActivityRecommendation = () => {
   };
 
   return (
-    <section className={styles.container}>
-      <div>
-        <h1 className={styles.title}>이런 활동을 해보는건 어떨까요?</h1>
-        {filteredActivities.length <= 1 ? (
-          <p className={styles.empty}>추천할 활동이 없습니다!</p>
-        ) : (
-          <ul className={styles.activities}>
-            {filteredActivities.map((activity) => (
-              <li
-                key={activity.id}
-                className={`${styles.activity} ${
-                  selectedActivity?.id === activity.id && styles.selected
-                }`}
-                onClick={() => handleActivityClick(activity)}
+    <>
+      <Link
+        style={{
+          position: "absolute",
+          margin: "10px",
+          color: "#FBC20F",
+          fontSize: "20px",
+        }}
+        to="/category"
+      >
+        {"<"} 뒤로가기
+      </Link>
+      <section className={styles.container}>
+        <div>
+          <h1 className={styles.title}>이런 활동을 해보는건 어떨까요?</h1>
+          {filteredActivities.length <= 1 ? (
+            <p className={styles.empty}>추천할 활동이 없습니다!</p>
+          ) : (
+            <ul className={styles.activities}>
+              {filteredActivities.map((activity) => (
+                <li
+                  key={activity.id}
+                  className={`${styles.activity} ${
+                    selectedActivity?.id === activity.id && styles.selected
+                  }`}
+                  onClick={() => handleActivityClick(activity)}
+                >
+                  <div
+                    className={styles.activityImage}
+                    style={{
+                      backgroundImage: `url(${getActivityCover(
+                        activity.tags
+                      )})`,
+                    }}
+                  ></div>
+                  <h2 className={styles.activityName}>
+                    {activity.title}
+                    <p className={styles.tooltip}>{activity.title}</p>
+                  </h2>
+                  <p className={styles.description}>{activity.description}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+          {filteredActivities.length > 1 ? (
+            <div className={styles.buttonContainer}>
+              <button className={styles.button} onClick={handleActivityChoice}>
+                이걸로 할게요
+              </button>
+            </div>
+          ) : (
+            <div className={styles.buttonContainer}>
+              <button
+                className={styles.button}
+                onClick={handleNavigateCategory}
               >
-                <div
-                  className={styles.activityImage}
-                  style={{
-                    backgroundImage: `url(${getActivityCover(activity.tags)})`,
-                  }}
-                ></div>
-                <h2 className={styles.activityName}>{activity.title}</h2>
-                <p className={styles.description}>{activity.description}</p>
-              </li>
-            ))}
-          </ul>
-        )}
-        {filteredActivities.length > 1 ? (
-          <div className={styles.buttonContainer}>
-            <button className={styles.button} onClick={handleActivityChoice}>
-              이걸로 할게요
-            </button>
-          </div>
-        ) : (
-          <div className={styles.buttonContainer}>
-            <button className={styles.button} onClick={handleNavigateCategory}>
-              다시 선택하기
-            </button>
-          </div>
-        )}
-      </div>
-    </section>
+                다시 선택하기
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
+    </>
   );
 };
 
