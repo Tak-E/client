@@ -5,9 +5,12 @@ import styles from "./Modal.module.css";
 import ModalContainer from "./ModalContainer";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import Like from "../../assets/like.png";
+import UnLike from "../../assets/unlike.png";
 
 const RatingModal = ({ onClose, id, title, memo, activity }) => {
-  const [rating, setRating] = useState(0);
+  const [selectedLikeStatus, setSelectedLikeStatus] = useState("");
+
   const navigate = useNavigate();
 
   const handleClose = () => {
@@ -15,29 +18,30 @@ const RatingModal = ({ onClose, id, title, memo, activity }) => {
   };
 
   const handleClick = () => {
-    console.log(rating);
-
     const selectedActivities = localStorage.getItem("selected-activities");
+
     const ratingUpdatedActivities = [
       ...JSON.parse(selectedActivities).map((item) => {
         if (item.id == activity.id) {
-          return { ...item, rating, isCompleted: true };
+          if (selectedLikeStatus === "like") {
+            return { ...item, selectedLikeStatus: true, isCompleted: true };
+          }
+          return { ...item, selectedLikeStatus: false, isCompleted: true };
         }
-
         return item;
       }),
     ];
+
     localStorage.setItem(
       "selected-activities",
       JSON.stringify(ratingUpdatedActivities)
     );
-
-    localStorage.setItem(
-      rating > 3 ? "preferfing-activity-type" : "dislike-activity-type",
-      activity.tags[0]
-    );
     navigate(0);
     handleClose();
+  };
+
+  const handleClickLikeButton = (likeStatus) => {
+    setSelectedLikeStatus(likeStatus);
   };
 
   return (
@@ -48,28 +52,37 @@ const RatingModal = ({ onClose, id, title, memo, activity }) => {
             <h1 style={{ margin: "20px 0" }} className={styles.innerTitle}>
               방금 전 완료한 활동 수행 만족도는 어떠셨나요?
             </h1>
-            <img
-              style={{ position: "initial" }}
-              width={150}
-              src={getActivityCover(activity.tags)}
-              alt="activity_cover"
-            />
+            <div
+              className={styles.imageContainer}
+              style={{
+                backgroundImage: `url(${getActivityCover(activity.tags)})`,
+              }}
+            ></div>
             <div className={styles.ratingInput}>
-              <div>별점을 선택하세요.</div>
-              <div className={styles.stars}>
-                {[0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5].map((value, i) => (
-                  <span
-                    onClick={() => setRating(value)}
-                    key={value}
-                    className={`${styles.ratingStar} ${
-                      rating >= value
-                        ? (i + 1) % 2 !== 0
-                          ? styles.selected_left
-                          : styles.selected_right
-                        : ""
-                    }`}
-                  ></span>
-                ))}
+              <h2 className={styles.activityTitle}>{activity.title}</h2>
+              <div className={styles.buttonContainer}>
+                <div
+                  className={`${styles.ratingButton} ${
+                    selectedLikeStatus === 'like' ? styles.selected : ""
+                  }`}
+                >
+                  <img
+                    src={Like}
+                    alt="like"
+                    onClick={() => handleClickLikeButton("like")}
+                  />
+                </div>
+                <div
+                  className={`${styles.ratingButton} ${
+                    selectedLikeStatus ==='unlike' ? styles.selected : ""
+                  }`}
+                >
+                  <img
+                    src={UnLike}
+                    alt="unlike"
+                    onClick={() => handleClickLikeButton("unlike")}
+                  />
+                </div>
               </div>
             </div>
             <button

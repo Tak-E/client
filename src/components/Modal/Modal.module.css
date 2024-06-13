@@ -151,3 +151,45 @@
 .ratingStar.selected_right {
   background-position-x: 75px;
 }
+
+.imageContainer {
+  margin: 0 auto;
+  width: 300px;
+  height: 250px;
+  background-color: #fff;
+  border-radius: 30px;
+  margin-top: 20px;
+  margin-bottom: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.activityTitle {
+  font-size: 21px;
+  color: #3c3b3b;
+  font-weight: 700;
+  margin-bottom: 13px;
+}
+
+.buttonContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 27px;
+  left: -40px;
+}
+
+.ratingButton {
+  width: 75px;
+  height: 75px;
+  opacity: 0.3;
+}
+
+.ratingButton img {
+  cursor: pointer;
+}
+
+.ratingButton.selected {
+  opacity: 1;
+}
