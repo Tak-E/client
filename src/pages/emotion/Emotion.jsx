@@ -4,7 +4,6 @@ import badImage from "../../assets/emotions/bad.png";
 import sosoImage from "../../assets/emotions/soso.png";
 import happyImage from "../../assets/emotions/happy.png";
 import veryHappyImage from "../../assets/emotions/very-happy.png";
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";

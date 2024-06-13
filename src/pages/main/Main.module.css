@@ -48,6 +48,7 @@ img.alignCenter {
 .sun {
   width: 300px;
   top: 10px;
+  cursor: pointer;
 }
 
 .sun.pulse {
@@ -116,6 +117,7 @@ img.alignCenter {
 
 .toolbarIcon {
   position: relative;
+  transition: all 0.4s;
 }
 
 .toolbarIcon:hover .tooltip {

@@ -23,6 +23,7 @@
   height: 120px;
   cursor: pointer;
   opacity: 0.5;
+  transition: opacity 0.2s;
 }
 
 .emotionButton.selected {

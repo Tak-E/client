@@ -86,8 +86,14 @@ const Category = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSelectEmotion = (e) => {
-    e.currentTarget.classList.toggle(styles.selected);
-    setSelectedEmotions([...selectedEmotions, e.target.textContent]);
+    const emotion = e.target.textContent;
+    const isSelected = e.currentTarget.classList.toggle(styles.selected);
+
+    if (isSelected) {
+      setSelectedEmotions((prev) => [...prev, emotion]);
+    } else {
+      setSelectedEmotions((prev) => prev.filter((em) => em !== emotion));
+    }
   };
 
   const handleSubmitEmotions = () => {
@@ -95,7 +101,7 @@ const Category = () => {
       setErrorMessage("감정을 1개 이상 선택해주세요.");
       return;
     }
-    
+
     localStorage.setItem("selected-emotions", selectedEmotions);
     setSelectedEmotions([]);
     navigate("/activity-recommendation");
@@ -114,7 +120,7 @@ const Category = () => {
           color: "#FBC20F",
           fontSize: "20px",
         }}
-        to="/"
+        to="/emotion"
       >
         {"<"} 뒤로가기
       </Link>

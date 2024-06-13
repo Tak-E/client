@@ -124,15 +124,6 @@ const Main = () => {
         alt="sun-img"
         onClick={handleAnimationSun}
       />
-      {/* <button>
-        <img
-          className={`${styles.toggle} ${styles.alignCenter}`}
-          src={toggleImg}
-          onClick={() => console.log("hi")}
-          alt="toolbar-img"
-        />
-      </button> */}
-
       <div className={styles.toolbar}>
         <Link
           to="/activity-stats"
@@ -169,11 +160,7 @@ const Main = () => {
           }}
           onClick={() => setIsHiding((prev) => !prev)}
         >
-          <img
-            // className={`${styles.toggle} ${styles.alignCenter}`}
-            src={toggleImg}
-            alt="toolbar-img"
-          />
+          <img src={toggleImg} alt="toolbar-img" />
         </button>
       </div>
     </div>

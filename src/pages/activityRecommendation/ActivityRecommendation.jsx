@@ -6,37 +6,12 @@ import { activities } from "../../data/activities";
 import { filterActivities } from "../../util";
 import { Link, useNavigate } from "react-router-dom";
 import getActivityCover from "../../data/getActivityCover";
-
-// const activities = [
-//   {
-//     image:
-//       "https://mediahub.seoul.go.kr/uploads/mediahub/2022/04/jqPSSIsMrKiOfOZEvcRVkTCdhYrzBWuh.png",
-//     title: "따듯한 차 한잔 마시기",
-//     description: "차 한잔을 마시면서 우울한 마음을 진정시켜보세요.",
-//     happyStatus: "행복지수(int)",
-//     emotion: "감정상태",
-//   },
-//   {
-//     image:
-//       "https://mediahub.seoul.go.kr/uploads/mediahub/2022/04/jqPSSIsMrKiOfOZEvcRVkTCdhYrzBWuh.png",
-//     title: "따듯한 차 한잔 마시기",
-//     description: "차 한잔을 마시면서 우울한 마음을 진정시켜보세요.",
-//     happyStatus: "행복지수(vint)",
-//     emotion: "감정상태",
-//   },
-//   {
-//     image:
-//       "https://mediahub.seoul.go.kr/uploads/mediahub/2022/04/jqPSSIsMrKiOfOZEvcRVkTCdhYrzBWuh.png",
-//     title: "따듯한 차 한잔 마시기",
-//     description: "차 한잔을 마시면서 우울한 마음을 진정시켜보세요.",
-//     happyStatus: "행복지수(int)",
-//     emotion: "감정상태",
-//   },
-// ];
+import Modal from "../../components/Modal/Modal";
 
 const ActivityRecommendation = () => {
-  const [selectedActivity, setSelectedActivity] = useState(null);
   const navigate = useNavigate();
+  const [selectedActivity, setSelectedActivity] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const selectedCategories = useRef(
     localStorage.getItem("selected-emotions").split(",")
@@ -48,7 +23,7 @@ const ActivityRecommendation = () => {
 
   const handleActivityChoice = () => {
     if (selectedActivity === null) {
-      alert("활동을 선택해주세요");
+      setErrorMessage("활동을 선택해주세요");
       return;
     }
     if (!localStorage.getItem("selected-activities")) {
@@ -80,6 +55,9 @@ const ActivityRecommendation = () => {
 
   return (
     <>
+      {errorMessage !== "" && (
+        <Modal onClose={() => setErrorMessage("")} description={errorMessage} />
+      )}
       <Link
         style={{
           position: "absolute",
