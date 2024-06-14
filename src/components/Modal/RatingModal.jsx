@@ -36,6 +36,19 @@ const RatingModal = ({ onClose, id, title, memo, activity }) => {
       "selected-activities",
       JSON.stringify(ratingUpdatedActivities)
     );
+
+    const tagScore = JSON.parse(localStorage.getItem("tagScore"));
+
+    activity.tags.forEach((tag) => {
+      if (selectedLikeStatus === "like") {
+        tagScore[tag] += 1;
+      } else {
+        tagScore[tag] -= 1;
+      }
+    });
+
+    localStorage.setItem("tagScore", JSON.stringify(tagScore));
+
     navigate(0);
     handleClose();
   };
@@ -63,7 +76,7 @@ const RatingModal = ({ onClose, id, title, memo, activity }) => {
               <div className={styles.buttonContainer}>
                 <div
                   className={`${styles.ratingButton} ${
-                    selectedLikeStatus === 'like' ? styles.selected : ""
+                    selectedLikeStatus === "like" ? styles.selected : ""
                   }`}
                 >
                   <img
@@ -74,7 +87,7 @@ const RatingModal = ({ onClose, id, title, memo, activity }) => {
                 </div>
                 <div
                   className={`${styles.ratingButton} ${
-                    selectedLikeStatus ==='unlike' ? styles.selected : ""
+                    selectedLikeStatus === "unlike" ? styles.selected : ""
                   }`}
                 >
                   <img

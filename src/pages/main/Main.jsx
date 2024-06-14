@@ -96,6 +96,35 @@ const Main = () => {
     setActivities([...JSON.parse(activities)]);
   }, []);
 
+  useEffect(() => {
+    if (localStorage.getItem("tagScore")) return;
+    localStorage.setItem(
+      "tagScore",
+      JSON.stringify({
+        음악: 0,
+        도전하기: 0,
+        말해보기: 0,
+        식사: 0,
+        쇼핑하기: 0,
+        씻기: 0,
+        방문하기: 0,
+        여행: 0,
+        산책: 0,
+        "진정하기-실내": 0,
+        "진정하기-야외": 0,
+        독서: 0,
+        적어보기: 0,
+        운동: 0,
+        그려보기: 0,
+        영화: 0,
+        사진: 0,
+        청소: 0,
+        요리: 0,
+        친구: 0,
+      })
+    );
+  }, []);
+
   const handleAnimationSun = () => {
     const sun = sunRef.current;
     if (sun) {
