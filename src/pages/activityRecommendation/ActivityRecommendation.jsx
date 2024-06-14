@@ -1,6 +1,6 @@
 // Byeonghyeon Kang
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import styles from "./ActivityRecommendation.module.css";
 import { activities } from "../../data/activities";
 import { filterActivities } from "../../util";
@@ -13,9 +13,9 @@ const ActivityRecommendation = () => {
   const [selectedActivity, setSelectedActivity] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const selectedCategories = useRef(
-    localStorage.getItem("selected-emotions").split(",")
-  );
+  // const selectedCategories = useRef(
+  //   localStorage.getItem("selected-emotions").split(",")
+  // );
 
   const handleActivityClick = (activity) => {
     setSelectedActivity(activity);
@@ -42,12 +42,8 @@ const ActivityRecommendation = () => {
     navigate("/");
   };
 
-  const filteredActivities = filterActivities(
-    activities,
-    selectedCategories.current
-  )
-    .slice(0, 3)
-    .filter((activity) => !activity.isCompleted);
+  const filteredActivities = filterActivities(activities);
+  console.log("filteredActivities:", filteredActivities);
 
   const handleNavigateCategory = () => {
     navigate("/category");
@@ -72,11 +68,14 @@ const ActivityRecommendation = () => {
       <section className={styles.container}>
         <div>
           <h1 className={styles.title}>이런 활동을 해보는건 어떨까요?</h1>
-          {filteredActivities.length <= 1 ? (
+          {filteredActivities[0].length +
+            filteredActivities[1].length +
+            filteredActivities[2].length ===
+          0 ? (
             <p className={styles.empty}>추천할 활동이 없습니다!</p>
           ) : (
             <ul className={styles.activities}>
-              {filteredActivities.map((activity) => (
+              {/* {activities.map((activity) => (
                 <li
                   key={activity.id}
                   className={`${styles.activity} ${
@@ -98,10 +97,91 @@ const ActivityRecommendation = () => {
                   </h2>
                   <p className={styles.description}>{activity.description}</p>
                 </li>
-              ))}
+              ))} */}
+
+              <li
+                key={filteredActivities[0][0].id}
+                className={`${styles.activity} ${
+                  selectedActivity?.id === filteredActivities[0][0].id &&
+                  styles.selected
+                }`}
+                onClick={() => handleActivityClick(filteredActivities[0][0])}
+              >
+                <div
+                  className={styles.activityImage}
+                  style={{
+                    backgroundImage: `url(${getActivityCover(
+                      filteredActivities[0][0].tags
+                    )})`,
+                  }}
+                ></div>
+                <h2 className={styles.activityName}>
+                  {filteredActivities[0][0].title}
+                  <p className={styles.tooltip}>
+                    {filteredActivities[0][0].title}
+                  </p>
+                </h2>
+                <p className={styles.description}>
+                  {filteredActivities[0][0].description}
+                </p>
+              </li>
+
+              <li
+                key={filteredActivities[1][0].id}
+                className={`${styles.activity} ${
+                  selectedActivity?.id === filteredActivities[1][0].id &&
+                  styles.selected
+                }`}
+                onClick={() => handleActivityClick(filteredActivities[1][0])}
+              >
+                <div
+                  className={styles.activityImage}
+                  style={{
+                    backgroundImage: `url(${getActivityCover(
+                      filteredActivities[1][0].tags
+                    )})`,
+                  }}
+                ></div>
+                <h2 className={styles.activityName}>
+                  {filteredActivities[1][0].title}
+                  <p className={styles.tooltip}>
+                    {filteredActivities[1][0].title}
+                  </p>
+                </h2>
+                <p className={styles.description}>
+                  {filteredActivities[1][0].description}
+                </p>
+              </li>
+
+              <li
+                key={filteredActivities[2][0].id}
+                className={`${styles.activity} ${
+                  selectedActivity?.id === filteredActivities[2][0].id &&
+                  styles.selected
+                }`}
+                onClick={() => handleActivityClick(filteredActivities[2][0])}
+              >
+                <div
+                  className={styles.activityImage}
+                  style={{
+                    backgroundImage: `url(${getActivityCover(
+                      filteredActivities[2][0].tags
+                    )})`,
+                  }}
+                ></div>
+                <h2 className={styles.activityName}>
+                  {filteredActivities[2][0].title}
+                  <p className={styles.tooltip}>
+                    {filteredActivities[2][0].title}
+                  </p>
+                </h2>
+                <p className={styles.description}>
+                  {filteredActivities[2][0].description}
+                </p>
+              </li>
             </ul>
           )}
-          {filteredActivities.length > 1 ? (
+          {activities.length > 1 ? (
             <div className={styles.buttonContainer}>
               <button className={styles.button} onClick={handleActivityChoice}>
                 이걸로 할게요
