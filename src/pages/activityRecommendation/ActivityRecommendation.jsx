@@ -1,5 +1,3 @@
-// Byeonghyeon Kang
-
 import { useState } from "react";
 import styles from "./ActivityRecommendation.module.css";
 import { activities } from "../../data/activities";
@@ -7,15 +5,16 @@ import { filterActivities } from "../../util";
 import { Link, useNavigate } from "react-router-dom";
 import getActivityCover from "../../data/getActivityCover";
 import Modal from "../../components/Modal/Modal";
+import RollbackImage from "../../assets/rollback.png";
 
 const ActivityRecommendation = () => {
   const navigate = useNavigate();
   const [selectedActivity, setSelectedActivity] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
-
-  // const selectedCategories = useRef(
-  //   localStorage.getItem("selected-emotions").split(",")
-  // );
+  const initialFilteredActivities = filterActivities(activities);
+  const [filteredActivities, setFilteredActivities] = useState(
+    initialFilteredActivities
+  );
 
   const handleActivityClick = (activity) => {
     setSelectedActivity(activity);
@@ -33,7 +32,6 @@ const ActivityRecommendation = () => {
       );
     } else {
       const selectedActivities = localStorage.getItem("selected-activities");
-
       localStorage.setItem(
         "selected-activities",
         JSON.stringify([...JSON.parse(selectedActivities), selectedActivity])
@@ -42,11 +40,25 @@ const ActivityRecommendation = () => {
     navigate("/");
   };
 
-  const filteredActivities = filterActivities(activities);
-  console.log("filteredActivities:", filteredActivities);
-
   const handleNavigateCategory = () => {
     navigate("/category");
+  };
+
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
+
+  const handleRollbackClick = (index) => {
+    const activitiesSet = [...filteredActivities];
+    if (activitiesSet[index].length > 0) {
+      activitiesSet[index] = shuffleArray([...activitiesSet[index]]);
+      setFilteredActivities(activitiesSet);
+      setSelectedActivity(activitiesSet[index][0]);
+    }
   };
 
   return (
@@ -75,30 +87,6 @@ const ActivityRecommendation = () => {
             <p className={styles.empty}>추천할 활동이 없습니다!</p>
           ) : (
             <ul className={styles.activities}>
-              {/* {activities.map((activity) => (
-                <li
-                  key={activity.id}
-                  className={`${styles.activity} ${
-                    selectedActivity?.id === activity.id && styles.selected
-                  }`}
-                  onClick={() => handleActivityClick(activity)}
-                >
-                  <div
-                    className={styles.activityImage}
-                    style={{
-                      backgroundImage: `url(${getActivityCover(
-                        activity.tags
-                      )})`,
-                    }}
-                  ></div>
-                  <h2 className={styles.activityName}>
-                    {activity.title}
-                    <p className={styles.tooltip}>{activity.title}</p>
-                  </h2>
-                  <p className={styles.description}>{activity.description}</p>
-                </li>
-              ))} */}
-
               <li
                 key={filteredActivities[0][0].id}
                 className={`${styles.activity} ${
@@ -125,7 +113,6 @@ const ActivityRecommendation = () => {
                   {filteredActivities[0][0].description}
                 </p>
               </li>
-
               <li
                 key={filteredActivities[1][0].id}
                 className={`${styles.activity} ${
@@ -152,7 +139,6 @@ const ActivityRecommendation = () => {
                   {filteredActivities[1][0].description}
                 </p>
               </li>
-
               <li
                 key={filteredActivities[2][0].id}
                 className={`${styles.activity} ${
@@ -181,6 +167,31 @@ const ActivityRecommendation = () => {
               </li>
             </ul>
           )}
+
+          <div className={styles.rollbackContainer}>
+            <div className={styles.rollback}>
+              <img
+                src={RollbackImage}
+                alt="rollback"
+                onClick={() => handleRollbackClick(0)}
+              />
+            </div>
+            <div className={styles.rollback}>
+              <img
+                src={RollbackImage}
+                alt="rollback"
+                onClick={() => handleRollbackClick(1)}
+              />
+            </div>
+            <div className={styles.rollback}>
+              <img
+                src={RollbackImage}
+                alt="rollback"
+                onClick={() => handleRollbackClick(2)}
+              />
+            </div>
+          </div>
+
           {activities.length > 1 ? (
             <div className={styles.buttonContainer}>
               <button className={styles.button} onClick={handleActivityChoice}>
