@@ -11,11 +11,11 @@
 }
 
 .innerContainer {
-  margin-top: 244px;
+  margin-top: 200px;
   display: flex;
   justify-content: center;
   gap: 27px;
-  margin-bottom: 255px;
+  margin-bottom: 200px;
 }
 
 .emotionButton {
